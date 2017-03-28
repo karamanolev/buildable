@@ -25,6 +25,13 @@ r = requests.put(
     files={'image': open('eagle.png', 'rb')},
 )
 r.raise_for_status()
+r = requests.put(
+    'http://localhost:8002/api/v1/projects/{}/builds/{}/screenshots/{}'.format(
+        project, build, 'tux.png'),
+    files={'image': open('tux.png', 'rb')},
+)
+r.raise_for_status()
+
 print(r.text)
 
 print('Finishing build...')
